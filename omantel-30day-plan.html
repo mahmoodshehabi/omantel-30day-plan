@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>30-Day Founder Action Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --purple: #534AB7;
+    --purple-light: #EEEDFE;
+    --purple-dark: #3C3489;
+    --purple-darker: #26215C;
+    --teal: #0F6E56;
+    --coral: #993C1D;
+    --blue: #185FA5;
+    --bg: #F7F6F2;
+    --card: #ffffff;
+    --border: #E8E6E0;
+    --border-light: #F0EDE8;
+    --text: #1a1a1a;
+    --text-mid: #555;
+    --text-muted: #999;
+    --text-faint: #bbb;
+    --input-bg: #F7F6F2;
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    padding: 0 0 4rem;
+  }
+
+  .app {
+    max-width: 660px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem;
+  }
+
+  /* Top bar */
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--purple-darker);
+    letter-spacing: 0.02em;
+  }
+
+  .logo span { color: var(--purple); }
+
+  .top-badge {
+    font-size: 11px;
+    font-weight: 500;
+    background: var(--purple-light);
+    color: var(--purple-dark);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  /* Hero */
+  .hero { margin-bottom: 2rem; }
+
+  .hero-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-title span { color: var(--purple); }
+
+  .hero-sub {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* Cards */
+  .card {
+    background: var(--card);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-faint);
+    margin-bottom: 12px;
+  }
+
+  /* Fields */
+  .field-grid { display: grid; gap: 10px; }
+  .field-grid.two { grid-template-columns: 1fr 1fr; }
+
+  .field-wrap { display: flex; flex-direction: column; gap: 4px; }
+
+  .field-lbl {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .field-input {
+    width: 100%;
+    font-size: 14px;
+    color: var(--text);
+    background: var(--input-bg);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 9px 12px;
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+    transition: border-color 0.15s, background 0.15s;
+    appearance: none;
+  }
+
+  .field-input:focus {
+    border-color: var(--purple);
+    background: #fff;
+  }
+
+  .field-input::placeholder { color: #ccc; }
+
+  textarea.field-input {
+    resize: none;
+    min-height: 60px;
+    line-height: 1.5;
+  }
+
+  /* Stats */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .stat {
+    background: var(--card);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+
+  .stat-val {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+
+  .stat-lbl {
+    font-size: 11px;
+    color: var(--text-faint);
+    margin-top: 1px;
+  }
+
+  /* Progress */
+  .progress-wrap { margin-bottom: 1.25rem; }
+
+  .progress-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+
+  .progress-txt { font-size: 12px; color: var(--text-muted); }
+
+  .progress-pct {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--purple);
+    letter-spacing: -0.01em;
+  }
+
+  .progress-track {
+    height: 5px;
+    background: var(--purple-light);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--purple);
+    border-radius: 10px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+
+  /* Week blocks */
+  .week-block {
+    background: var(--card);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+
+  .week-hdr {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.1s;
+  }
+
+  .week-hdr:hover { background: #FAFAF8; }
+
+  .wdot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .d1 { background: var(--purple); }
+  .d2 { background: var(--teal); }
+  .d3 { background: var(--coral); }
+  .d4 { background: var(--blue); }
+
+  .week-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    flex: 1;
+  }
+
+  .week-days {
+    font-size: 12px;
+    color: var(--text-faint);
+  }
+
+  .week-prog {
+    font-size: 11px;
+    color: var(--text-faint);
+    margin-left: auto;
+    margin-right: 8px;
+    white-space: nowrap;
+  }
+
+  .week-arr {
+    font-size: 9px;
+    color: var(--text-faint);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .week-arr.open { transform: rotate(180deg); }
+
+  .week-body {
+    display: none;
+    border-top: 0.5px solid var(--border-light);
+    padding: 12px 16px;
+  }
+
+  .week-body.open { display: block; }
+
+  /* Tasks */
+  .task-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 0.5px solid var(--border-light);
+  }
+
+  .task-row:last-of-type { border-bottom: none; }
+
+  .chkbox {
+    width: 17px;
+    height: 17px;
+    border: 1.5px solid #D5D2CC;
+    border-radius: 4px;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    background: #fff;
+  }
+
+  .chkbox:hover { border-color: var(--purple); }
+
+  .chkbox.on {
+    background: var(--purple);
+    border-color: var(--purple);
+  }
+
+  .chkbox.on::after {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 7px;
+    border: 1.5px solid #fff;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg) translateY(-1px);
+  }
+
+  .task-body { flex: 1; min-width: 0; }
+
+  .task-txt {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.45;
+    transition: color 0.15s;
+  }
+
+  .task-txt.done {
+    color: var(--text-faint);
+    text-decoration: line-through;
+  }
+
+  .task-note-input {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    font-size: 12px;
+    color: var(--text-mid);
+    background: transparent;
+    border: none;
+    border-bottom: 0.5px solid var(--border);
+    border-radius: 0;
+    padding: 3px 0;
+    font-family: 'DM Sans', sans-serif;
+    resize: none;
+    min-height: 22px;
+    outline: none;
+    line-height: 1.5;
+  }
+
+  .task-note-input:focus { border-bottom-color: var(--purple); }
+  .task-note-input::placeholder { color: #ddd; }
+
+  /* Reflection */
+  .reflect-wrap {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 0.5px solid var(--border-light);
+  }
+
+  .reflect-lbl {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-faint);
+    margin-bottom: 6px;
+  }
+
+  .reflect-area {
+    width: 100%;
+    font-size: 13px;
+    color: var(--text);
+    background: var(--input-bg);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 9px 12px;
+    font-family: 'DM Sans', sans-serif;
+    resize: none;
+    min-height: 64px;
+    line-height: 1.5;
+    outline: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .reflect-area:focus {
+    border-color: var(--purple);
+    background: #fff;
+  }
+
+  .reflect-area::placeholder { color: #ccc; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-faint);
+    margin-top: 2.5rem;
+    line-height: 1.7;
+  }
+
+  .footer strong { color: var(--text-muted); font-weight: 500; }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    .field-grid.two { grid-template-columns: 1fr; }
+    .stats-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hero-title { font-size: 24px; }
+    .week-days { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <div class="top-bar">
+    <svg height="26" viewBox="0 0 200 44" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="36" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="38" fill="#2B2BFF" letter-spacing="-1">Oman</text>
+      <text x="114" y="36" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="38" fill="#2B2BFF" letter-spacing="-1">tel</text>
+      <polygon points="132,0 138,10 126,10" fill="#F97316"/>
+    </svg>
+    <div class="top-badge">Entrepreneurship 101</div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-title">Your <span>30-day</span> founder action plan</div>
+    <div class="hero-sub">Fill this in as you go. One assumption, one experiment, one week at a time.</div>
+  </div>
+
+  <div class="card">
+    <div class="section-label">About your idea</div>
+    <div class="field-grid two" style="margin-bottom:10px;">
+      <div class="field-wrap">
+        <span class="field-lbl">Your name</span>
+        <input class="field-input" type="text" placeholder="e.g. Ahmed Al-Rashidi" />
+      </div>
+      <div class="field-wrap">
+        <span class="field-lbl">Start date</span>
+        <input class="field-input" type="text" placeholder="e.g. 1 May 2026" />
+      </div>
+    </div>
+    <div class="field-grid" style="margin-bottom:10px;">
+      <div class="field-wrap">
+        <span class="field-lbl">My idea in one sentence</span>
+        <input class="field-input" type="text" placeholder="e.g. A platform connecting home cooks with busy professionals in Muscat" />
+      </div>
+    </div>
+    <div class="field-grid two">
+      <div class="field-wrap">
+        <span class="field-lbl">The problem I'm solving</span>
+        <textarea class="field-input" placeholder="Who has it? How painful is it?"></textarea>
+      </div>
+      <div class="field-wrap">
+        <span class="field-lbl">My riskiest assumption</span>
+        <textarea class="field-input" placeholder="The one thing that kills everything if wrong"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat"><div class="stat-val" id="s-done">0</div><div class="stat-lbl">done</div></div>
+    <div class="stat"><div class="stat-val" id="s-total">0</div><div class="stat-lbl">total tasks</div></div>
+    <div class="stat"><div class="stat-val" id="s-pct">0%</div><div class="stat-lbl">complete</div></div>
+    <div class="stat"><div class="stat-val" id="s-week">W1</div><div class="stat-lbl">active week</div></div>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-meta">
+      <span class="progress-txt" id="p-txt">0 of 0 tasks completed</span>
+      <span class="progress-pct" id="p-pct">0%</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="p-fill"></div></div>
+  </div>
+
+  <div id="weeks"></div>
+
+  <div class="footer">
+    Built for <strong>Omantel Entrepreneurship 101 Bootcamp</strong><br>Facilitated by Spring
+  </div>
+
+</div>
+
+<script>
+const data = [
+  {
+    dot: 'd1',
+    name: 'Week 1 — Idea clarity',
+    days: 'Days 1–7',
+    reflect: 'Can you explain your idea and riskiest assumption in under 60 seconds?',
+    tasks: [
+      'Write your idea in one sentence — problem, who has it, your solution',
+      'List every assumption your idea is built on (aim for at least 5)',
+      'Circle your riskiest assumption — the one that kills everything if wrong',
+      'Define your target customer — be specific, not broad',
+      'Find 3 competitors or alternatives that exist today',
+      'Write down: why you, why now, why this market',
+    ]
+  },
+  {
+    dot: 'd2',
+    name: 'Week 2 — Get out of the building',
+    days: 'Days 8–14',
+    reflect: 'Did your conversations confirm or challenge your riskiest assumption?',
+    tasks: [
+      'List 20 names of people who could be your target customer',
+      'Reach out to 10 of them — WhatsApp, call, or DM. Ask for 15 minutes',
+      'Run at least 5 customer discovery conversations — listen, don\'t pitch',
+      'Ask each: how do you solve this problem today? What does it cost you?',
+      'Write down the 3 most surprising things you heard',
+      'Ask at least 2 people: "Would you pay for this?" — watch the reaction, not just the answer',
+    ]
+  },
+  {
+    dot: 'd3',
+    name: 'Week 3 — Build your MVP',
+    days: 'Days 15–21',
+    reflect: 'What did your MVP teach you that conversations alone could not?',
+    tasks: [
+      'Decide: same idea, refined idea, or completely different direction?',
+      'Pick your MVP type: landing page, concierge, manual-first, prototype, or fake door',
+      'Define your success condition before building — what result proves it works?',
+      'Define your failure condition — what result means you should pivot or stop?',
+      'Build and launch your MVP — give yourself 3 days max',
+      'Get your MVP in front of at least 5 real potential customers',
+    ]
+  },
+  {
+    dot: 'd4',
+    name: 'Week 4 — Learn and decide',
+    days: 'Days 22–30',
+    reflect: 'What would you do differently in the next 30 days?',
+    tasks: [
+      'Document every piece of feedback from your MVP — good and bad',
+      'Go back to your riskiest assumption — was it true, false, or unclear?',
+      'Decide: persist, pivot, or park',
+      'If persisting: what is the next riskiest assumption to test?',
+      'Write a one-page summary: what you built, what you learned, what\'s next',
+      'Share your summary with one person you trust — get honest feedback',
+    ]
+  }
+];
+
+const checks = {};
+let totalTasks = 0;
+
+function build() {
+  const container = document.getElementById('weeks');
+
+  data.forEach((week, wi) => {
+    totalTasks += week.tasks.length;
+
+    const block = document.createElement('div');
+    block.className = 'week-block';
+
+    const hdr = document.createElement('div');
+    hdr.className = 'week-hdr';
+    hdr.innerHTML = `
+      <div class="wdot ${week.dot}"></div>
+      <div class="week-name">${week.name}</div>
+      <div class="week-days">${week.days}</div>
+      <span class="week-prog" id="wp${wi}">0 / ${week.tasks.length}</span>
+      <span class="week-arr ${wi === 0 ? 'open' : ''}" id="wa${wi}">▼</span>
+    `;
+
+    const body = document.createElement('div');
+    body.className = 'week-body' + (wi === 0 ? ' open' : '');
+
+    hdr.addEventListener('click', () => {
+      const isOpen = body.classList.toggle('open');
+      document.getElementById('wa' + wi).classList.toggle('open', isOpen);
+    });
+
+    week.tasks.forEach((taskText, ti) => {
+      const key = `${wi}-${ti}`;
+      checks[key] = false;
+
+      const row = document.createElement('div');
+      row.className = 'task-row';
+
+      const chk = document.createElement('div');
+      chk.className = 'chkbox';
+      chk.addEventListener('click', () => {
+        checks[key] = !checks[key];
+        chk.classList.toggle('on', checks[key]);
+        txt.classList.toggle('done', checks[key]);
+        updateStats();
+      });
+
+      const tbody = document.createElement('div');
+      tbody.className = 'task-body';
+
+      const txt = document.createElement('div');
+      txt.className = 'task-txt';
+      txt.textContent = taskText;
+
+      const note = document.createElement('textarea');
+      note.className = 'task-note-input';
+      note.placeholder = 'Add your notes...';
+      note.rows = 1;
+      note.addEventListener('input', function () {
+        this.style.height = 'auto';
+        this.style.height = this.scrollHeight + 'px';
+      });
+
+      tbody.appendChild(txt);
+      tbody.appendChild(note);
+      row.appendChild(chk);
+      row.appendChild(tbody);
+      body.appendChild(row);
+    });
+
+    const ref = document.createElement('div');
+    ref.className = 'reflect-wrap';
+    ref.innerHTML = `<div class="reflect-lbl">Weekly reflection</div>`;
+    const ra = document.createElement('textarea');
+    ra.className = 'reflect-area';
+    ra.placeholder = week.reflect;
+    ref.appendChild(ra);
+    body.appendChild(ref);
+
+    block.appendChild(hdr);
+    block.appendChild(body);
+    container.appendChild(block);
+  });
+
+  document.getElementById('s-total').textContent = totalTasks;
+  document.getElementById('p-txt').textContent = `0 of ${totalTasks} tasks completed`;
+}
+
+function updateStats() {
+  const done = Object.values(checks).filter(Boolean).length;
+  const pct = Math.round((done / totalTasks) * 100);
+
+  document.getElementById('s-done').textContent = done;
+  document.getElementById('s-pct').textContent = pct + '%';
+  document.getElementById('p-fill').style.width = pct + '%';
+  document.getElementById('p-txt').textContent = `${done} of ${totalTasks} tasks completed`;
+  document.getElementById('p-pct').textContent = pct + '%';
+
+  let activeWeek = 0;
+  data.forEach((week, wi) => {
+    let wdone = 0;
+    week.tasks.forEach((_, ti) => { if (checks[`${wi}-${ti}`]) wdone++; });
+    document.getElementById('wp' + wi).textContent = `${wdone} / ${week.tasks.length}`;
+    if (wdone > 0) activeWeek = wi;
+  });
+  document.getElementById('s-week').textContent = 'W' + (activeWeek + 1);
+}
+
+build();
+</script>
+
+</body>
+</html>
